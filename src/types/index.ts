@@ -4,7 +4,7 @@ export interface Task {
     id?: number;
     text: string;
     day: string;
-    status: "To Do" | "Done";
+    completed: boolean;
 }
 
 export interface ListOfTasksProps {

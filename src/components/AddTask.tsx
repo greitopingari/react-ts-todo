@@ -3,13 +3,15 @@ import Button from "./Button"
 import { AddTaskProps, Task } from "../types";
 import { appendTaskToLocalStorage, getTasksFromLocalStorage } from "../utils";
 
+const TASK_INITIAL_STATE = {
+    text: "",
+    day: "",
+    completed: false
+}
+
 const AddTask = ({ hideForm, setTasks }: AddTaskProps) => {
 
-    const [taskData, setTaskData] = useState<Task>({
-        text: "",
-        day: "",
-        status: "To Do"
-    })
+    const [taskData, setTaskData] = useState<Task>(TASK_INITIAL_STATE)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -22,18 +24,16 @@ const AddTask = ({ hideForm, setTasks }: AddTaskProps) => {
         e.preventDefault();
         const tasks = getTasksFromLocalStorage();
         tasks.push({ ...taskData, id: tasks.length + 1 });
+
         setTasks(tasks);
         appendTaskToLocalStorage(tasks);
+
         resetTaskAddFields();
         hideForm(false);
     }
 
     function resetTaskAddFields() {
-        setTaskData((prev) => ({
-            ...prev,
-            text: "",
-            day: ""
-        }))
+        setTaskData(TASK_INITIAL_STATE)
     }
 
     return (

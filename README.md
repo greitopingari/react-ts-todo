@@ -10,7 +10,7 @@ What can you do with this project?
 
 Additionally, all of your To-Dos will be stored in the local storage.
 
-## Available Scripts
+## How to run the project?
 
 In the project directory, you can run:
 
